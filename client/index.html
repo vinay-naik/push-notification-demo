@@ -1,0 +1,25 @@
+<html>
+
+	<head>
+
+	</head>
+
+	<body>
+		<h1>YOLO</h1>
+		<h3 id="count">0</h3>
+		<!-- <script src="../node_modules/socket.io-client/dist/socket.io.js"></script> -->
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io('http://localhost:3000');
+			socket.on('news', function (data) {
+				console.log(data);
+				socket.emit('my other event', { my: 'data' });
+			});
+			// socket.on('yolo', function (data) {
+			// 	console.log("MAKA NAKA GO");
+			// 	// socket.emit('my other event', { my: 'data' });
+			// });
+		</script>
+	</body>
+
+</html>
