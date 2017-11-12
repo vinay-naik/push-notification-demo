@@ -1,0 +1,21 @@
+{
+  "name": "push_notification_demo",
+  "version": "1.0.0",
+  "description": "This is a test app to implement and learn how to implement a websocket.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket.io",
+    "node",
+    "websocket",
+    "notification"
+  ],
+  "author": "Vinay Dayanand Naik",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
