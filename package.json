@@ -1,22 +1,26 @@
 {
-	"name": "push_notification_demo",
-	"version": "1.0.0",
-	"description": "This is a test app to implement and learn how to implement a websocket.",
-	"scripts": {
-		"start": "node ./server/server.js"
-	},
-	"keywords": [
-		"socket.io",
-		"node",
-		"websocket",
-		"notification"
-	],
-	"author": "Vinay Dayanand Naik",
-	"license": "ISC",
-	"dependencies": {
-		"express": "^4.16.2",
-		"socket.io": "^2.0.4",
-		"body-parser": "~1.18.2",
-		"cookie-parser": "~1.4.3"
-	}
+  "name": "push_notification_demo",
+  "version": "1.0.0",
+  "description": "This is a test app to implement and learn how to implement a websocket.",
+  "scripts": {
+    "start": "node ./server/server.js"
+  },
+  "keywords": [
+    "socket.io",
+    "node",
+    "websocket",
+    "notification"
+  ],
+  "author": "Vinay Dayanand Naik",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "moment": "^2.19.2",
+    "mongoose": "^4.13.1",
+    "socket.io": "^2.0.4"
+  }
 }
