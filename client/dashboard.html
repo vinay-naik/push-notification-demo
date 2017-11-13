@@ -24,7 +24,7 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed pace-done aside-menu-hidden" id="page-top">
 	<header class="app-header navbar">
 		<div>
-			<a class="navbar-brand" href="#">Notify-Demo</a>
+			<a class="navbar-brand" href="javascript:void(0)">Notify-Demo</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<form class="form-inline px-4">
@@ -33,34 +33,20 @@
 			</form>
 		</ul>
 		<ul class="nav navbar-nav ml-auto">
-			<li class="nav-item dropdown d-md-down-none">
-				<a class="nav-link nav-pill" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+			<li id="header_notification_parent" class="nav-item dropdown d-md-down-none">
+				<a class="nav-link nav-pill" id="header-notification-pill" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-bell-o"></i>
-					<span class="badge badge-pill badge-danger">5</span>
+					<span id="header_notification_counter" class="notification_counter badge badge-pill badge-cyan">0</span>
 				</a>
-				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+				<div class="dropdown-menu dropdown-menu-right notification_counter_dropdown dropdown-menu-lg" aria-labelledby="header-notification-pill">
 					<div class="dropdown-header text-center">
-						<strong>You have 5 notifications</strong>
+						<strong>You have <span class="notification_counter_secondary color-cyan">0</span> unread notifications</strong>
 					</div>
-					<a href="#" class="dropdown-item">
-						<i class="icon-user-follow text-success"></i> New user registered
-					</a>
-					<a href="#" class="dropdown-item">
-						<i class="icon-user-unfollow text-danger"></i> User deleted
-					</a>
-					<a href="#" class="dropdown-item">
-						<i class="icon-chart text-info"></i> Sales report is ready
-					</a>
-					<a href="#" class="dropdown-item">
-						<i class="icon-basket-loaded text-primary"></i> New client
-					</a>
-					<a href="#" class="dropdown-item">
-						<i class="icon-speedometer text-warning"></i> Server overloaded
-					</a>
+					<div class="notification-container" id="notification-container"></div>
 				</div>
 			</li>
 			<li class="nav-item dropdown d-md-down-none">
-				<a class="nav-link nav-pill" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link nav-pill" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-envelope-o"></i>
 					<span class="badge badge-pill badge-warning">15</span>
 				</a>
@@ -68,7 +54,7 @@
 					<div class="dropdown-header text-center">
 						<strong>You have 5 pending tasks</strong>
 					</div>
-					<a href="#" class="dropdown-item">
+					<a href="javascript:void(0)" class="dropdown-item">
 						<div class="small mb-1">Upgrade NPM &amp; Bower
 							<span class="float-right">
 								<strong>0%</strong>
@@ -78,7 +64,7 @@
 							<div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 						</span>
 					</a>
-					<a href="#" class="dropdown-item">
+					<a href="javascript:void(0)" class="dropdown-item">
 						<div class="small mb-1">ReactJS Version
 							<span class="float-right">
 								<strong>25%</strong>
@@ -88,7 +74,7 @@
 							<div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 						</span>
 					</a>
-					<a href="#" class="dropdown-item">
+					<a href="javascript:void(0)" class="dropdown-item">
 						<div class="small mb-1">VueJS Version
 							<span class="float-right">
 								<strong>50%</strong>
@@ -98,7 +84,7 @@
 							<div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 						</span>
 					</a>
-					<a href="#" class="dropdown-item">
+					<a href="javascript:void(0)" class="dropdown-item">
 						<div class="small mb-1">Add new layouts
 							<span class="float-right">
 								<strong>75%</strong>
@@ -108,7 +94,7 @@
 							<div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 						</span>
 					</a>
-					<a href="#" class="dropdown-item">
+					<a href="javascript:void(0)" class="dropdown-item">
 						<div class="small mb-1">Angular 2 Cli Version
 							<span class="float-right">
 								<strong>100%</strong>
@@ -118,23 +104,22 @@
 							<div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 						</span>
 					</a>
-					<a href="#" class="dropdown-item text-center">
+					<a href="javascript:void(0)" class="dropdown-item text-center">
 						<strong>View all tasks</strong>
 					</a>
 				</div>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link nav-pill avatar" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+			<li class="nav-item dropdown" style="margin-right: 6px !important;">
+				<a class="nav-link nav-pill avatar" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
 					<img src="/public/images/avatar/avatar1.png" class="img-avatar" alt="admin@bootstrapmaster.com">
-					<span class="badge badge-pill badge-danger">9</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
 					<div class="dropdown-header text-center">
 						<strong>Settings</strong>
 					</div>
-					<a class="dropdown-item" href="#">
+					<a class="dropdown-item" href="javascript:void(0)">
 						<i class="fa fa-user"></i> Profile</a>
-					<a class="dropdown-item" href="#">
+					<a class="dropdown-item" href="javascript:void(0)">
 						<i class="fa fa-wrench"></i> Settings</a>
 					<a class="dropdown-item" href="/login">
 						<i class="fa fa-lock"></i> Logout</a>
@@ -144,7 +129,7 @@
 	</header>
 	<!-- Navigation-->
 
-	<div class="app-body" style="display: inline-flex; position: relative;">
+	<div class="app-body">
 		<div class="sidebar">
 			<nav class="sidebar-nav">
 				<ul class="nav">
@@ -160,252 +145,21 @@
 
 					<li class="divider"></li>
 					<li class="nav-title text-center">
-						<span>UI Elements</span>
+						<span>More Links</span>
 					</li>
 					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
+						<a class="nav-link nav-dropdown-toggle" href="javascript:void(0)">
 							<i class="icon-puzzle"></i> Components</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="components-buttons.html">
-									<i class="icon-puzzle"></i> Buttons</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-social-buttons.html">
-									<i class="icon-puzzle"></i> Social Buttons</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-cards.html">
-									<i class="icon-puzzle"></i> Cards</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-modals.html">
-									<i class="icon-puzzle"></i> Modals</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-switches.html">
-									<i class="icon-puzzle"></i> Switches</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-tables.html">
-									<i class="icon-puzzle"></i> Tables</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="components-tabs.html">
-									<i class="icon-puzzle"></i> Tabs</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="icon-note"></i> Forms</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="forms-basic-forms.html">
-									<i class="icon-note"></i> Basic Forms</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="forms-advanced-forms.html">
-									<i class="icon-note"></i> Advanced Forms</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="forms-validation.html">
-									<i class="icon-note"></i> Validation</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="fa fa-code"></i> Editors</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="editors-code-editor.html">
-									<i class="icon-note"></i> Code Editor</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="editors-markdown-editor.html">
-									<i class="fa fa-code"></i> Markdown Editor</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="editors-text-editors.html">
-									<i class="icon-note"></i> Rich Text Editor</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="icon-star"></i> Icons</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="icons-font-awesome.html">
-									<i class="icon-star"></i> Font Awesome
-									<span class="badge badge-secondary">4.7</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="icons-simple-line-icons.html">
-									<i class="icon-star"></i> Simple Line Icons</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="icon-energy"></i> Plugins</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-calendar.html">
-									<i class="icon-calendar"></i> Calendar</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-draggable-cards.html">
-									<i class="icon-cursor-move"></i> Draggable Cards</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-loading-buttons.html">
-									<i class="icon-cursor"></i> Loading Buttons</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-notifications.html">
-									<i class="icon-info"></i> Notifications</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-sliders.html">
-									<i class="icon-equalizer"></i> Sliders</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-spinners.html">
-									<i class="fa fa-spinner"></i> Spinners</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="plugins-tables.html">
-									<i class="icon-list"></i> Tables</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="widgets.html">
-							<i class="icon-calculator"></i> Widgets
-							<span class="badge badge-info">NEW</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="charts.html">
-							<i class="icon-pie-chart"></i> Charts</a>
-					</li>
-					<li class="divider"></li>
-					<li class="nav-title text-center">
-						<span>Extras</span>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="icon-star"></i> Pages</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item">
-								<a class="nav-link" href="pages-login.html" target="_top">
-									<i class="icon-star"></i> Login</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="pages-register.html" target="_top">
-									<i class="icon-star"></i> Register</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="pages-404.html" target="_top">
-									<i class="icon-star"></i> Error 404</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="pages-500.html" target="_top">
-									<i class="icon-star"></i> Error 500</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item nav-dropdown">
-						<a class="nav-link nav-dropdown-toggle" href="#">
-							<i class="icon-layers"></i> UI Kits</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item nav-dropdown">
-								<a class="nav-link nav-dropdown-toggle" href="#">
-									<i class="icon-speech"></i> Invoicing</a>
-								<ul class="nav-dropdown-items">
-									<li class="nav-item">
-										<a class="nav-link" href="UIkits-invoicing-invoice.html">
-											<i class="icon-speech"></i> Invoice</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav-item nav-dropdown">
-								<a class="nav-link nav-dropdown-toggle" href="#">
-									<i class="icon-speech"></i> Email</a>
-								<ul class="nav-dropdown-items">
-									<li class="nav-item">
-										<a class="nav-link" href="UIkits-email-inbox.html">
-											<i class="icon-speech"></i> Inbox</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="UIkits-email-message.html">
-											<i class="icon-speech"></i> Message</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="UIkits-email-compose.html">
-											<i class="icon-speech"></i> Compose</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li class="divider m-2"></li>
-					<li class="nav-title">
-						Labels
-					</li>
-					<li class="nav-item hidden-cn">
-						<a class="nav-label" href="#">
-							<i class="fa fa-circle text-danger"></i> Label danger</a>
-					</li>
-					<li class="nav-item hidden-cn">
-						<a class="nav-label" href="#">
-							<i class="fa fa-circle text-info"></i> Label info</a>
-					</li>
-					<li class="nav-item hidden-cn">
-						<a class="nav-label" href="#">
-							<i class="fa fa-circle text-warning"></i> Label warning</a>
-					</li>
-					<li class="divider"></li>
-					<li class="nav-title">
-						System Utilization
-					</li>
-					<li class="nav-item px-3 hidden-cn">
-						<div class="text-uppercase mb-1">
-							<small>
-								<b>CPU Usage</b>
-							</small>
-						</div>
-						<div class="progress progress-xs">
-							<div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small class="text-muted">348 Processes. 1/4 Cores.</small>
-					</li>
-					<li class="nav-item px-3 hidden-cn">
-						<div class="text-uppercase mb-1">
-							<small>
-								<b>Memory Usage</b>
-							</small>
-						</div>
-						<div class="progress progress-xs">
-							<div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small class="text-muted">11444GB/16384MB</small>
-					</li>
-					<li class="nav-item px-3 hidden-cn">
-						<div class="text-uppercase mb-1">
-							<small>
-								<b>SSD 1 Usage</b>
-							</small>
-						</div>
-						<div class="progress progress-xs">
-							<div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<small class="text-muted">243GB/256GB</small>
-					</li>
-
+						<li class="nav-item">
+							<a class="nav-link" href="components-tables.html">
+								<i class="icon-puzzle"></i> Tables</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="components-tabs.html">
+								<i class="icon-puzzle"></i> Tabs</a>
+						</li>
+				</ul>
+				</li>
 				</ul>
 			</nav>
 			<button class="sidebar-minimizer brand-minimizer" type="button"></button>
@@ -414,7 +168,7 @@
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="#">Dashboard</a>
+					<a href="javascript:void(0)">Dashboard</a>
 				</li>
 				<li class="breadcrumb-item active">My Dashboard</li>
 			</ol>
@@ -428,7 +182,7 @@
 							</div>
 							<div class="mr-5">26 New Messages!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="#">
+						<a class="card-footer text-white clearfix small z-1" href="javascript:void(0)">
 							<span class="float-left">View Details</span>
 							<span class="float-right">
 								<i class="fa fa-angle-right"></i>
@@ -444,7 +198,7 @@
 							</div>
 							<div class="mr-5">11 New Tasks!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="#">
+						<a class="card-footer text-white clearfix small z-1" href="javascript:void(0)">
 							<span class="float-left">View Details</span>
 							<span class="float-right">
 								<i class="fa fa-angle-right"></i>
@@ -460,7 +214,7 @@
 							</div>
 							<div class="mr-5">123 New Orders!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="#">
+						<a class="card-footer text-white clearfix small z-1" href="javascript:void(0)">
 							<span class="float-left">View Details</span>
 							<span class="float-right">
 								<i class="fa fa-angle-right"></i>
@@ -476,7 +230,7 @@
 							</div>
 							<div class="mr-5">13 New Tickets!</div>
 						</div>
-						<a class="card-footer text-white clearfix small z-1" href="#">
+						<a class="card-footer text-white clearfix small z-1" href="javascript:void(0)">
 							<span class="float-left">View Details</span>
 							<span class="float-right">
 								<i class="fa fa-angle-right"></i>
@@ -496,24 +250,24 @@
 					<div class="card-columns">
 						<!-- Example Social Card-->
 						<div class="card mb-3">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=610" alt="">
 							</a>
 							<div class="card-body">
 								<h6 class="card-title mb-1">
-									<a href="#">David Miller</a>
+									<a href="javascript:void(0)">David Miller</a>
 								</h6>
 								<p class="card-text small">These waves are looking pretty good today!
-									<a href="#">#surfsup</a>
+									<a href="javascript:void(0)">#surfsup</a>
 								</p>
 							</div>
 							<hr class="my-0">
 							<div class="card-body py-2 small">
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-comment"></i>Comment</a>
-								<a class="d-inline-block" href="#">
+								<a class="d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-share"></i>Share</a>
 							</div>
 							<hr class="my-0">
@@ -522,32 +276,32 @@
 									<img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
 										<h6 class="mt-0 mb-1">
-											<a href="#">John Smith</a>
+											<a href="javascript:void(0)">John Smith</a>
 										</h6>Very nice! I wish I was there! That looks amazing!
 										<ul class="list-inline mb-0">
 											<li class="list-inline-item">
-												<a href="#">Like</a>
+												<a href="javascript:void(0)">Like</a>
 											</li>
 											<li class="list-inline-item">·</li>
 											<li class="list-inline-item">
-												<a href="#">Reply</a>
+												<a href="javascript:void(0)">Reply</a>
 											</li>
 										</ul>
 										<div class="media mt-3">
-											<a class="d-flex pr-3" href="#">
+											<a class="d-flex pr-3" href="javascript:void(0)">
 												<img src="http://placehold.it/45x45" alt="">
 											</a>
 											<div class="media-body">
 												<h6 class="mt-0 mb-1">
-													<a href="#">David Miller</a>
+													<a href="javascript:void(0)">David Miller</a>
 												</h6>Next time for sure!
 												<ul class="list-inline mb-0">
 													<li class="list-inline-item">
-														<a href="#">Like</a>
+														<a href="javascript:void(0)">Like</a>
 													</li>
 													<li class="list-inline-item">·</li>
 													<li class="list-inline-item">
-														<a href="#">Reply</a>
+														<a href="javascript:void(0)">Reply</a>
 													</li>
 												</ul>
 											</div>
@@ -559,24 +313,24 @@
 						</div>
 						<!-- Example Social Card-->
 						<div class="card mb-3">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=180" alt="">
 							</a>
 							<div class="card-body">
 								<h6 class="card-title mb-1">
-									<a href="#">John Smith</a>
+									<a href="javascript:void(0)">John Smith</a>
 								</h6>
 								<p class="card-text small">Another day at the office...
-									<a href="#">#workinghardorhardlyworking</a>
+									<a href="javascript:void(0)">#workinghardorhardlyworking</a>
 								</p>
 							</div>
 							<hr class="my-0">
 							<div class="card-body py-2 small">
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-comment"></i>Comment</a>
-								<a class="d-inline-block" href="#">
+								<a class="d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-share"></i>Share</a>
 							</div>
 							<hr class="my-0">
@@ -585,15 +339,15 @@
 									<img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
 										<h6 class="mt-0 mb-1">
-											<a href="#">Jessy Lucas</a>
+											<a href="javascript:void(0)">Jessy Lucas</a>
 										</h6>Where did you get that camera?! I want one!
 										<ul class="list-inline mb-0">
 											<li class="list-inline-item">
-												<a href="#">Like</a>
+												<a href="javascript:void(0)">Like</a>
 											</li>
 											<li class="list-inline-item">·</li>
 											<li class="list-inline-item">
-												<a href="#">Reply</a>
+												<a href="javascript:void(0)">Reply</a>
 											</li>
 										</ul>
 									</div>
@@ -603,55 +357,55 @@
 						</div>
 						<!-- Example Social Card-->
 						<div class="card mb-3">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=281" alt="">
 							</a>
 							<div class="card-body">
 								<h6 class="card-title mb-1">
-									<a href="#">Jeffery Wellings</a>
+									<a href="javascript:void(0)">Jeffery Wellings</a>
 								</h6>
 								<p class="card-text small">Nice shot from the skate park!
-									<a href="#">#kickflip</a>
-									<a href="#">#holdmybeer</a>
-									<a href="#">#igotthis</a>
+									<a href="javascript:void(0)">#kickflip</a>
+									<a href="javascript:void(0)">#holdmybeer</a>
+									<a href="javascript:void(0)">#igotthis</a>
 								</p>
 							</div>
 							<hr class="my-0">
 							<div class="card-body py-2 small">
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-comment"></i>Comment</a>
-								<a class="d-inline-block" href="#">
+								<a class="d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-share"></i>Share</a>
 							</div>
 							<div class="card-footer small text-muted">Posted 1 hr ago</div>
 						</div>
 						<!-- Example Social Card-->
 						<div class="card mb-3">
-							<a href="#">
+							<a href="javascript:void(0)">
 								<img class="card-img-top img-fluid w-100" src="https://unsplash.it/700/450?image=185" alt="">
 							</a>
 							<div class="card-body">
 								<h6 class="card-title mb-1">
-									<a href="#">David Miller</a>
+									<a href="javascript:void(0)">David Miller</a>
 								</h6>
 								<p class="card-text small">It's hot, and I might be lost...
-									<a href="#">#desert</a>
-									<a href="#">#water</a>
-									<a href="#">#anyonehavesomewater</a>
-									<a href="#">#noreally</a>
-									<a href="#">#thirsty</a>
-									<a href="#">#dehydration</a>
+									<a href="javascript:void(0)">#desert</a>
+									<a href="javascript:void(0)">#water</a>
+									<a href="javascript:void(0)">#anyonehavesomewater</a>
+									<a href="javascript:void(0)">#noreally</a>
+									<a href="javascript:void(0)">#thirsty</a>
+									<a href="javascript:void(0)">#dehydration</a>
 								</p>
 							</div>
 							<hr class="my-0">
 							<div class="card-body py-2 small">
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-thumbs-up"></i>Like</a>
-								<a class="mr-3 d-inline-block" href="#">
+								<a class="mr-3 d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-comment"></i>Comment</a>
-								<a class="d-inline-block" href="#">
+								<a class="d-inline-block" href="javascript:void(0)">
 									<i class="fa fa-fw fa-share"></i>Share</a>
 							</div>
 							<hr class="my-0">
@@ -660,33 +414,33 @@
 									<img class="d-flex mr-3" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
 										<h6 class="mt-0 mb-1">
-											<a href="#">John Smith</a>
+											<a href="javascript:void(0)">John Smith</a>
 										</h6>The oasis is a mile that way, or is that just a mirage?
 										<ul class="list-inline mb-0">
 											<li class="list-inline-item">
-												<a href="#">Like</a>
+												<a href="javascript:void(0)">Like</a>
 											</li>
 											<li class="list-inline-item">·</li>
 											<li class="list-inline-item">
-												<a href="#">Reply</a>
+												<a href="javascript:void(0)">Reply</a>
 											</li>
 										</ul>
 										<div class="media mt-3">
-											<a class="d-flex pr-3" href="#">
+											<a class="d-flex pr-3" href="javascript:void(0)">
 												<img src="http://placehold.it/45x45" alt="">
 											</a>
 											<div class="media-body">
 												<h6 class="mt-0 mb-1">
-													<a href="#">David Miller</a>
+													<a href="javascript:void(0)">David Miller</a>
 												</h6>
 												<img class="img-fluid w-100 mb-1" src="https://unsplash.it/700/450?image=789" alt="">I'm saved, I found a cactus. How do I open this thing?
 												<ul class="list-inline mb-0">
 													<li class="list-inline-item">
-														<a href="#">Like</a>
+														<a href="javascript:void(0)">Like</a>
 													</li>
 													<li class="list-inline-item">·</li>
 													<li class="list-inline-item">
-														<a href="#">Reply</a>
+														<a href="javascript:void(0)">Reply</a>
 													</li>
 												</ul>
 											</div>
@@ -705,7 +459,7 @@
 						<div class="card-header">
 							<i class="fa fa-bell-o"></i> Feed Example</div>
 						<div class="list-group list-group-flush small">
-							<a class="list-group-item list-group-item-action" href="#">
+							<a class="list-group-item list-group-item-action" href="javascript:void(0)">
 								<div class="media">
 									<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
@@ -715,7 +469,7 @@
 									</div>
 								</div>
 							</a>
-							<a class="list-group-item list-group-item-action" href="#">
+							<a class="list-group-item list-group-item-action" href="javascript:void(0)">
 								<div class="media">
 									<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
@@ -724,7 +478,7 @@
 									</div>
 								</div>
 							</a>
-							<a class="list-group-item list-group-item-action" href="#">
+							<a class="list-group-item list-group-item-action" href="javascript:void(0)">
 								<div class="media">
 									<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
@@ -734,7 +488,7 @@
 									</div>
 								</div>
 							</a>
-							<a class="list-group-item list-group-item-action" href="#">
+							<a class="list-group-item list-group-item-action" href="javascript:void(0)">
 								<div class="media">
 									<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/45x45" alt="">
 									<div class="media-body">
@@ -746,7 +500,7 @@
 									</div>
 								</div>
 							</a>
-							<a class="list-group-item list-group-item-action" href="#">View all activity...</a>
+							<a class="list-group-item list-group-item-action" href="javascript:void(0)">View all activity...</a>
 						</div>
 						<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 					</div>
@@ -886,8 +640,24 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	 crossorigin="anonymous"></script>
-	<script src="public/javascripts/dashboard.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="public/javascripts/jquery.tmpl.min.js"></script>
+	<script src="public/javascripts/dashboard.js"></script>
+
+	<script id="notificationTemplate" type="text/x-jquery-tmpl">
+		<div class="notification-mini-container">
+			<div class="notification-pill" data-toggle="dropdown-item">
+				<img src="${image_url}" class="notification-image"
+				alt="/public/images/avatar/avatar1.png">
+				<img>
+			</div>
+			<div>
+				<strong class="darker-fade">${name}</strong>
+				<span class="faded">${action}</span>
+			</div>
+			<hr>
+		</div>
+	</script>
 
 </body>
 

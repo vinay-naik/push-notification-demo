@@ -17,3 +17,52 @@ a {
 .no-shadow {
   box-shadow: none !important;
 }
+
+.notification-image {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border: 0;
+  border-radius: 1.0rem;  
+}
+
+.notification-pill {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin-right: 5px;
+  /* line-height: 36px; */
+  border: 1px solid #c0cadd;
+  border-radius: 50em;
+  background: lightgray;
+}
+
+.notification-mini-container {
+  padding: 10px;
+  display: inline-flex;
+  background-color: #eaf0f2; 
+  border-bottom: solid 1px #bbbcc5;
+  width: 100%;
+}
+/* #7d8793 */
+
+.darker-fade {
+  color : #6c6c6d;
+}
+.faded {
+  color: #848d98;
+}
+
+.notification-container {
+  height: 250px;
+  overflow: auto;
+}
+
+.badge-cyan {
+  color: white;
+  background-color: #4ebcbb;
+}
+
+.color-cyan {
+  color: #4ebcbb;
+}
