@@ -66,3 +66,9 @@ a {
 .color-cyan {
   color: #4ebcbb;
 }
+
+#login-error-container {
+    margin-bottom: 0px;
+    visibility: hidden;
+    color: #fb1953;
+}

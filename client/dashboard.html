@@ -34,13 +34,15 @@
 		</ul>
 		<ul class="nav navbar-nav ml-auto">
 			<li id="header_notification_parent" class="nav-item dropdown d-md-down-none">
-				<a class="nav-link nav-pill" id="header-notification-pill" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link nav-pill" id="header-notification-pill" data-toggle="dropdown" href="javascript:void(0)" role="button"
+				 aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-bell-o"></i>
 					<span id="header_notification_counter" class="notification_counter badge badge-pill badge-cyan">0</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right notification_counter_dropdown dropdown-menu-lg" aria-labelledby="header-notification-pill">
 					<div class="dropdown-header text-center">
-						<strong>You have <span class="notification_counter_secondary color-cyan">0</span> unread notifications</strong>
+						<strong>You have
+							<span class="notification_counter_secondary color-cyan">0</span> unread notifications</strong>
 					</div>
 					<div class="notification-container" id="notification-container"></div>
 				</div>
@@ -121,7 +123,7 @@
 						<i class="fa fa-user"></i> Profile</a>
 					<a class="dropdown-item" href="javascript:void(0)">
 						<i class="fa fa-wrench"></i> Settings</a>
-					<a class="dropdown-item" href="/login">
+					<a id="logout-btn" class="dropdown-item">
 						<i class="fa fa-lock"></i> Logout</a>
 				</div>
 			</li>
@@ -162,7 +164,6 @@
 				</li>
 				</ul>
 			</nav>
-			<button class="sidebar-minimizer brand-minimizer" type="button"></button>
 		</div>
 		<div class="col-sm-10 offset-sm-2">
 			<!-- Breadcrumbs-->
@@ -634,8 +635,7 @@
 			<a href="javascript:void(0);">Vinay Naik</a>
 		</span>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	 crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
 	 crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
@@ -653,7 +653,7 @@
 			</div>
 			<div>
 				<strong class="darker-fade">${name}</strong>
-				<span class="faded">${action}</span>
+				<span class="faded">${message}</span>
 			</div>
 			<hr>
 		</div>
