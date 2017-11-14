@@ -33,12 +33,14 @@
 			</form>
 		</ul>
 		<ul class="nav navbar-nav ml-auto">
-			<li id="header_notification_parent" class="nav-item dropdown d-md-down-none">
+			<li id="header_notification_parent" class="nav-item dropdown d-md-down-none animate-dropdown">
 				<a class="nav-link nav-pill" id="header-notification-pill" data-toggle="dropdown" href="javascript:void(0)" role="button"
 				 aria-haspopup="true" aria-expanded="false">
+				 	<span class="caret"></span>
 					<i class="fa fa-bell-o"></i>
 					<span id="header_notification_counter" class="notification_counter badge badge-pill badge-cyan">0</span>
 				</a>
+
 				<div class="dropdown-menu dropdown-menu-right notification_counter_dropdown dropdown-menu-lg" aria-labelledby="header-notification-pill">
 					<div class="dropdown-header text-center">
 						<strong>You have
@@ -139,7 +141,7 @@
 						<span>Dashboard</span>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="index.html">
+						<a class="nav-link" href="javascript:void(0);">
 							<i class="icon-speedometer"></i> Dashboard
 							<span class="badge badge-info">NEW</span>
 						</a>
@@ -153,11 +155,11 @@
 						<a class="nav-link nav-dropdown-toggle" href="javascript:void(0)">
 							<i class="icon-puzzle"></i> Components</a>
 						<li class="nav-item">
-							<a class="nav-link" href="components-tables.html">
+							<a class="nav-link" href="javascript:void(0)">
 								<i class="icon-puzzle"></i> Tables</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="components-tabs.html">
+							<a class="nav-link" href="javascript:void(0)">
 								<i class="icon-puzzle"></i> Tabs</a>
 						</li>
 				</ul>
@@ -647,8 +649,7 @@
 	<script id="notificationTemplate" type="text/x-jquery-tmpl">
 		<div class="notification-mini-container">
 			<div class="notification-pill" data-toggle="dropdown-item">
-				<img src="${image_url}" class="notification-image"
-				alt="/public/images/avatar/avatar1.png">
+				<img src="${image_url}" class="notification-image">
 				<img>
 			</div>
 			<div>
