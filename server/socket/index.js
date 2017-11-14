@@ -1,11 +1,13 @@
-(function(){
+(function () {
 	'use strict';
 
 	var Notifications 	= require('../api/notifications/notification.model');
-	var Users	 		= require('../api/users/users.model');
-	var moment	 		= require('moment');
-	
-	var getRandomImages = function() {
+	var Users 			= require('../api/users/users.model');
+	var config 			= require('../config/');
+	var moment 			= require('moment');
+	var jwt 			= require('jsonwebtoken');
+
+	var getRandomImages = function () {
 		var tempImages = [
 			"https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png",
 			"https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png",
@@ -16,7 +18,7 @@
 		return tempImages[index];
 	}
 
-	var getRandomUserNames = function() {
+	var getRandomUserNames = function () {
 		var tempNames = [
 			"Vinay Naik",
 			"Dharmesh Satyanarayan",
@@ -29,7 +31,7 @@
 		return tempNames[index];
 	}
 
-	var getRandomMessages = function() {
+	var getRandomMessages = function () {
 		var tempMessages = [
 			'commented on your profile',
 			'tagged you in an inmage',
@@ -41,18 +43,18 @@
 		return tempMessages[index];
 	}
 
-	var notifyAllUsersCron = function(io) {
-		setInterval(function() {
+	var notifyAllUsersCron = function (io) {
+		setInterval(function () {
 			Users.find({}).select('email').exec(function (err, users) {
 				if (err) {
 					//ignore error
 				}
 				users.forEach(user => {
 					console.log(user.email);
-					var notificationData = { 
+					var notificationData = {
 						image_url	: getRandomImages(),
-						name 		: getRandomUserNames(),
-						message 	: getRandomMessages(),
+						name		: getRandomUserNames(),
+						message		: getRandomMessages(),
 						unread		: true,
 						user_id		: user._id,
 						created		: moment().format()
@@ -64,21 +66,34 @@
 						delete notificationData.user_id;
 						delete notificationData.unread;
 						delete notificationData.created;
-						io.sockets.in(user.email).emit('notification', notificationData);
+						io.sockets.in(user._id).emit('notification', notificationData);
 					});
 				});
 			});
 		}, 10000);
 	}
-	
-	module.exports = function(io) {
+
+	module.exports = function (io) {
 		notifyAllUsersCron(io);
+
+		//This socket middleware is used to make sure that only an authenticated user can join a channel.
+		io.use(function (socket, next) {
+			if (socket.handshake.query && socket.handshake.query.token) {
+				jwt.verify(socket.handshake.query.token, config.secret, function (err, decoded) {
+					if (err) return next(new Error('User authentication error.'));
+					socket.decodedToken = decoded;
+					next();
+				});
+			}
+			next(new Error('User authentication error.'));
+		});
+
 		io.on('connection', function (socket) {
 			console.log("In socket");
 
 			socket.on('join', function (data) {
-				console.log("In join channel...", data);
-				socket.join(data.email); // making use of socket.io rooms for single user communication
+				console.log("In join channel...", socket.decodedToken._id);
+				socket.join(socket.decodedToken._id); // making use of socket.io rooms for single user communication
 			});
 
 			socket.on('disconnect', function (data) {
