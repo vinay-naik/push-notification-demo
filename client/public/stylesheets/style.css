@@ -72,3 +72,40 @@ a {
     visibility: hidden;
     color: #fb1953;
 }
+
+  /* caret style */
+.caret {
+  position: relative;
+  color: #f9f9fa;
+}
+
+/* dropdown style */
+
+.dropdown.show .caret:after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  border-bottom: 8px solid;
+  border-left: 9px solid rgba(0, 0, 0, 0);
+  border-right: 9px solid rgba(0, 0, 0, 0);
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: inherit;
+  z-index: 1001;
+}
+.dropdown.show .caret:before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  border-bottom: 9px solid rgba(0, 0, 0, 0.2);
+  border-left: 9px solid rgba(0, 0, 0, 0);
+  border-right: 9px solid rgba(0, 0, 0, 0);
+  z-index: 1001;
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: gray;
+}
+
+.dropdown-menu {
+  top: 38px !important;
+}
