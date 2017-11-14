@@ -1,6 +1,10 @@
 (function () {
 	'use strict';
 
+	/**
+	 * This function will do an ajax call for authenticating the user.
+	 * @param {String} method Determines wether the call is login or signup 
+	 */
 	var loginAjaxCallback = function (method) {
 		method = method || 'login';
 		$.ajax({
@@ -29,6 +33,9 @@
 		});
 	};
 
+	/**
+	 * Signup wrapper function
+	 */
 	var signupCallback = function () {
 		var form = document.getElementById('login-form');
 		var isValidForm = form.checkValidity();
@@ -37,6 +44,9 @@
 		}
 	};
 
+	/**
+	 * Login wrapper function
+	 */
 	var loginCallback = function () {
 		var form = document.getElementById('login-form');
 		var isValidForm = form.checkValidity();
@@ -46,6 +56,7 @@
 	};
 
 	$(document).ready(function () {
+		//No ajax interceptors have been used on the login page
 		$('#signup-btn').on('click', signupCallback);
 		$('#login-btn').on('click', loginCallback);
 	});
