@@ -1,7 +1,6 @@
 (function () {
 	'use strict';
 
-	// var _ = require('lodash');
 	var moment 	= require('moment');
 	var Users 	= require('../users/users.model');
 	var config 	= require('../../config');
@@ -29,9 +28,9 @@
 	 */
 	exports.signup = function (req, res) {
 		if(req.body && !req.body.email) {
-			res.status(400).json({status: 400, message: 'Email id not provided.'});
+			return res.status(400).json({status: 400, message: 'Email id not provided.'});
 		} else if(req.body && !req.body.password){
-			res.status(400).json({status: 400, message: 'Password not provided.'});
+			return res.status(400).json({status: 400, message: 'Password not provided.'});
 		}
 
 		Users.findOne({email: req.body.email}, function (err, user) {
@@ -49,8 +48,13 @@
 					if (err) { 
 						return handleError(res, err); 
 					}
-					userData.token = signJWT({ _id: user._id});
-					return res.status(200).json({status: 200, message: 'Successfully registered user ' +  req.body.email + '.', data: userData});
+
+					var tempUser = Object.assign({}, user); //user object is forxez and cannot be modified hence we are shallow cloning it
+					tempUser = tempUser._doc;
+					tempUser.token = signJWT({ _id: user._id});
+					delete tempUser._id;
+					delete tempUser.password;
+					return res.status(200).json({status: 200, message: 'Successfully registered user ' +  req.body.email + '.', data: tempUser});
 				});
 			} else {
 				res.status(400).json({status: 400, message: 'User ' + req.body.email + ' is already registered.'});
@@ -67,28 +71,26 @@
 	 */
 	exports.login = function (req, res) {
 		if(req.body && !req.body.email) {
-			res.status(400).json({status: 400, message: 'Email id not provided.'});
+			return res.status(400).json({status: 400, message: 'Email id not provided.'});
 		} else if(req.body && !req.body.password){
-			res.status(400).json({status: 400, message: 'Password not provided.'});
+			return res.status(400).json({status: 400, message: 'Password not provided.'});
 		}
 
-		Users.findOne({email: req.body.email}, function (err, user) {
-			if (err) { 
+		Users.getAuthenticated(req.body.email, req.body.password, function(err, user, errorReason) {
+			if (err) {
+				console.log(err); 
 				return handleError(res, err); 
+			} else if(errorReason) {
+				return res.status(400).json({status: 400, message: errorReason});
 			}
-			if (!user) {
-				res.status(400).json({status: 400, message: 'Invalid email/password.'});
-			} else {
-				var currentTime = moment().format();
-				Users.update({_id : user._id}, {$set: {last_online: currentTime }}, function (err, userData) {
-					//we can ignore the error here since time update is not really important 
-					var tempUser = Object.assign({}, user); //user object is forxez and cannot be modified hence we are shallow cloning it
-					tempUser = tempUser._doc;
-					tempUser.token = signJWT({ _id: user._id});
-					delete tempUser._id;
-					return res.status(200).json({status: 200, message: 'Successfully authenticated user ' +  req.body.email + '.', data: tempUser});
-				});
-			}
+
+			var tempUser = Object.assign({}, user); //user object is forxez and cannot be modified hence we are shallow cloning it
+			tempUser = tempUser._doc;
+			tempUser.token = signJWT({ _id: user._id});
+			delete tempUser._id;
+			delete tempUser.password;
+			return res.status(200).json({status: 200, message: 'Successfully authenticated user ' +  req.body.email + '.', data: tempUser});
+			
 		});
 	};
 
