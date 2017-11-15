@@ -7,9 +7,13 @@
 (function () {
 	'use strict';
 
-	var mongoose = require('mongoose');
-	var bcrypt = require('bcrypt');
-	var Schema = mongoose.Schema;
+	var mongoose= require('mongoose');
+	var bcrypt 	= require('bcrypt');
+	var moment 	= require('moment');
+	// var config 	= require('../../config/');
+	var Schema 	= mongoose.Schema;
+	var SALT_WORK_FACTOR = 10;
+	
 
 	var UsersSchema = new Schema({
 		email		: { type: String, unique: true },
@@ -20,41 +24,64 @@
 		last_online	: Date
 	});
 
-	UsersSchema.virtual('original_password')
-		.set(function (original_password) {
-			this._password = original_password;
-			this.password = this.encryptPassword(original_password);
-		})
-		.get(function () {
-			return this._password;
+	UsersSchema.pre('save', function(next) {
+		var user = this;
+		// only hash the password if it has been modified (or is new)
+		if (!user.isModified('password')) return next();
+	
+		// generate a salt. We can also store a salt in config and use that.
+		bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+			if (err) return next(err);
+	
+			// hash the password using our new salt. 
+			bcrypt.hash(user.password, salt, function(err, hash) {
+				if (err) return next(err);
+				user.password = hash;
+				next();
+			});
 		});
+	});
 
-		UsersSchema.methods = {
+	UsersSchema.statics.getAuthenticated = function(email, password, next) {
+		this.findOne({ email: email }).select('+password').exec(function(err, user) {
+			if (err) {
+				return next(err);
+			}
 
-		/**
-		 * Authenticate - check if the passwords are the same
-		 *
-		 * @param {String} plainText
-		 * @return {Boolean}
-		 * @api public
-		 */
-		authenticate: function (plainPassword) {
-			return bcrypt.compareSync(plainPassword, this.password);
-		},
-
-		/**
-		 * Encrypt password
-		 *
-		 * @param {String} password
-		 * @return {String}
-		 * @api public
-		 */
-		encryptPassword: function (password) {
-			if (!password)
-				return '';
-			return bcrypt.hashSync(password, 10);
-		}
+			// make sure the user exists
+			if (!user) {
+				return next(null, null, "Invalid email. User not found.");
+			}
+			
+			// test for a matching password
+			user.comparePassword(password, function(err, isMatch) {
+				if (err) {
+					return next(err);
+				}
+				// check if the password was a match
+				if(isMatch) {
+					var currentTime = moment().format();
+					var updates = {
+						$set: { last_online: currentTime},
+					};
+					user.update(updates, function(err) {
+						if(err) return next(err);
+						return next(null, user);
+					});
+				} else {
+					return next(null, null, "Incorrect password. Please try again.");
+				}
+			});
+		});
 	};
-
+	
+	
+	UsersSchema.methods.comparePassword = function(candidatePassword, next) {
+		bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+			if (err) return next(err);
+			return next(null, isMatch);
+		});
+	};
+	
 	module.exports = mongoose.model('User', UsersSchema);
 })();
