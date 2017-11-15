@@ -11,6 +11,10 @@
     "websocket",
     "notification"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinay-naik/push-notification-demo.git"
+  },
   "author": "Vinay Dayanand Naik",
   "license": "ISC",
   "dependencies": {
