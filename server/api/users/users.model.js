@@ -3,7 +3,6 @@
  * @author Vinay Naik
  * @fileOverview javascript file
  */
-
 (function () {
 	'use strict';
 
@@ -16,7 +15,7 @@
 	
 
 	var UsersSchema = new Schema({
-		email		: { type: String, unique: true },
+		email		: { type: String, unique: true, index: true },
 		password	: { type: String, select: false },
 		name		: String,
 		created		: Date,

@@ -1,3 +1,8 @@
+/**
+ * Created by Vinay Naik on 13/11/17.
+ * @author Vinay Naik
+ * @fileOverview javascript file
+ */
 (function () {
 	'use strict';
 
@@ -10,6 +15,10 @@
 		return res.status(500).json({status: 500, message: 'Internal server error.'});
 	}
 
+	/**
+	 * Here we are creating a jwt token to be used for authenticating our stateless api.
+	 * @param {object} payload Data to convert to token 
+	 */
 	var signJWT = function(payload) {
 		var token = jwt.sign(payload, config.secret, {
 			expiresIn: 86400 // expires in 24 hours
@@ -19,12 +28,11 @@
 
 
 	/**
-	 * @api {post} /users Create a new user
+	 * @api {post} /auth/signup Create a new user
 	 * @apiVersion 0.1.0
 	 * @apiName CreateUsers
 	 * @apiDescription Creates a new users.
-	 * @apiGroup Userss
-	 *
+	 * @apiGroup AUTH
 	 */
 	exports.signup = function (req, res) {
 		if(req.body && !req.body.email) {
@@ -63,11 +71,11 @@
 	};
 
 	/**
-	 * @api {post} /auth/login Login a user
+	 * @api {post} /auth/login Login/authenticate a user
 	 * @apiVersion 0.1.0
 	 * @apiName LoginUsers
 	 * @apiDescription Login and authenticate a user.
-	 * @apiGroup Users
+	 * @apiGroup AUTH
 	 */
 	exports.login = function (req, res) {
 		if(req.body && !req.body.email) {

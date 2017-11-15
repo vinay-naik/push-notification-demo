@@ -1,3 +1,8 @@
+/**
+ * Created by Vinay Naik on 14/11/17.
+ * @author Vinay Naik
+ * @fileOverview javascript file
+ */
 (function() {
 	'use strict';
 

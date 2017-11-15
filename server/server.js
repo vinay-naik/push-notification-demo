@@ -1,9 +1,13 @@
+/**
+ * Created by Vinay Naik on 12/11/17.
+ * @author Vinay Naik
+ * @fileOverview javascript file
+ */
 (function() {
 	'use strict';
 
 	var fs 			= require('fs');
 	var index 		= require('./routes/index');
-	var users 		= require('./routes/users');
 	var config 		= require('./config');
 
 	var express 	= require('express');
@@ -27,8 +31,8 @@
 		console.log("In started");
 	});
 
+	//initialize the socket
 	var io = require('socket.io')(server);
-	
 	var socket = require('./socket')(io);
 	
 })();

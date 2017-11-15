@@ -1,3 +1,8 @@
+/**
+ * Created by Vinay Naik on 14/11/17.
+ * @author Vinay Naik
+ * @fileOverview javascript file
+ */
 (function () {
 	'use strict';
 
@@ -20,15 +25,15 @@
 	 *
 	 */
 	exports.fetch = function (req, res) {
-		var limit 	= req.query.limit  || 10;
+		var limit 	= req.query.limit  || 20;
 		var page 	= req.query.page || 1;
 
 		Notifications.find({'user_id' : req.user._id})
 		.limit(limit)
 		.skip(limit * (page-1))
 		.sort({
-			unread	: 'desc',
-			created	: 'desc'
+			unread	: 'desc',	//get unread notifications first
+			created	: 'desc'	//get only the newest
 		})
 		.exec(function(err, notifications) {
 			if (err) { 

@@ -1,3 +1,8 @@
+/**
+ * Created by Vinay Naik on 14/11/17.
+ * @author Vinay Naik
+ * @fileOverview javascript file
+ */
 (function () {
 	'use strict';
 
@@ -7,6 +12,9 @@
 	var moment 			= require('moment');
 	var jwt 			= require('jsonwebtoken');
 
+	/**
+	 * This function will return a random image from the given list.
+	 */
 	var getRandomImages = function () {
 		var tempImages = [
 			"https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png",
@@ -18,6 +26,9 @@
 		return tempImages[index];
 	}
 
+	/**
+	 * This function will return a random User Name from the given list.
+	 */
 	var getRandomUserNames = function () {
 		var tempNames = [
 			"Vinay Naik",
@@ -31,6 +42,9 @@
 		return tempNames[index];
 	}
 
+	/**
+	 * This function will return a random message from the given list.
+	 */
 	var getRandomMessages = function () {
 		var tempMessages = [
 			'commented on your profile',
@@ -43,6 +57,10 @@
 		return tempMessages[index];
 	}
 
+	/**
+	 * This function will epush notifications every 30 seconds to all the users in the database.
+	 * @param {object} io 
+	 */
 	var notifyAllUsersCron = function (io) {
 		setInterval(function () {
 			Users.find({}).select('_id').exec(function (err, users) {
@@ -71,7 +89,7 @@
 					});
 				});
 			});
-		}, 10000);
+		}, 30000);
 	}
 
 	module.exports = function (io) {
@@ -83,10 +101,10 @@
 				jwt.verify(socket.handshake.query.token, config.secret, function (err, decoded) {
 					if (err) return next(new Error('User authentication error.'));
 					socket.decodedToken = decoded;
-					next();
+					return next();
 				});
 			}
-			next(new Error('User authentication error.'));
+			return next(new Error('User authentication error.'));
 		});
 
 		io.on('connection', function (socket) {
@@ -94,12 +112,14 @@
 
 			socket.on('join', function (data) {
 				console.log("In join channel...", socket.decodedToken._id);
-				socket.join(socket.decodedToken._id); // making use of socket.io rooms for single user communication
+				// making use of socket.io rooms for single user communication. 
+				// By making use of the auth middleware above we get the users id here 
+				// which we can use to cerate a private room.
+				socket.join(socket.decodedToken._id); 
 			});
 
 			socket.on('disconnect', function (data) {
 				console.log("User Disconnected", data);
-				// io.emit('user disconnected');
 			});
 		});
 	}
