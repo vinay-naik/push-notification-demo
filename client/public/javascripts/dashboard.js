@@ -133,6 +133,7 @@
 				socket.on('notification', populateMainNotification);
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				socket.on('notification', populateMainNotification);				
 				console.error("Failed to fetch notifications. ", XMLHttpRequest.responseJSON.message);
 			}
 		});
