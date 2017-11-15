@@ -1,7 +1,7 @@
 # Push Notification Demo
 
 This is a demo project created with an intention lo learn more about websockets.
-
+Github repo : https://github.com/vinay-naik/push-notification-demo
 
 STEPS TO SETUP THE PROJECT : 
 1 : Extract the project folder.
