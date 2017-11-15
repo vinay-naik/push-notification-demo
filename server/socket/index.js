@@ -20,7 +20,9 @@
 			"https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png",
 			"https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png",
 			"https://vignette.wikia.nocookie.net/thinknoodles/images/7/7c/Avatar.png/revision/latest?cb=20130719170211",
-			"http://www.clipartsfree.net/vector/large/Bassell_Avatar_Fabricatorz_Vector_Clipart.png"
+			"https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png",
+			"https://image.flaticon.com/icons/png/128/147/147140.png",
+			"https://image.flaticon.com/icons/png/128/168/168873.png"
 		];
 		var index = Math.floor(((Math.random()) * 100 % tempImages.length));
 		return tempImages[index];
