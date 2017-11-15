@@ -129,8 +129,8 @@
 					for (let index = 0; index < response.data.length; index++) {
 						$('#notificationTemplate').tmpl(response.data[index]).appendTo("#notification-container");
 					}
-					socket.on('notification', populateMainNotification);
 				}
+				socket.on('notification', populateMainNotification);
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				console.error("Failed to fetch notifications. ", XMLHttpRequest.responseJSON.message);
