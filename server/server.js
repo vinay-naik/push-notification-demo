@@ -23,7 +23,7 @@
 	app.set('appPath', 'client');
 	require('./routes')(app);
 
-	server.listen(3000, function () {
+	server.listen(config.port, function () {
 		console.log("In started");
 	});
 
