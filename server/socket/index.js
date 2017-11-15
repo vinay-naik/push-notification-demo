@@ -45,12 +45,13 @@
 
 	var notifyAllUsersCron = function (io) {
 		setInterval(function () {
-			Users.find({}).select('email').exec(function (err, users) {
+			Users.find({}).select('_id').exec(function (err, users) {
 				if (err) {
 					//ignore error
 				}
+				// console.log(users);
 				users.forEach(user => {
-					console.log(user.email);
+					console.log("Sending notification to user : ", user._id);
 					var notificationData = {
 						image_url	: getRandomImages(),
 						name		: getRandomUserNames(),
