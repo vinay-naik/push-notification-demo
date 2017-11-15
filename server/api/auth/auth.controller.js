@@ -118,7 +118,6 @@
 		var token = req.body.token || req.query.token || req.headers['x-access-token'];
 		if(token) {
 			jwt.verify(token, config.secret, function(err, decoded) {
-				console.log(err);
 				if (err) {
 					return res.status(401).json({status: 401,message : 'Invalid Token...'});
 				} else {
