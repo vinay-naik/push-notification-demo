@@ -69,7 +69,6 @@
 				}
 				// console.log(users);
 				users.forEach(user => {
-					console.log("Sending notification to user : ", user._id);
 					var notificationData = {
 						image_url	: getRandomImages(),
 						name		: getRandomUserNames(),
@@ -85,6 +84,7 @@
 						delete notificationData.user_id;
 						delete notificationData.unread;
 						delete notificationData.created;
+						console.log("Sending notification to user : ", user._id);
 						io.sockets.in(user._id).emit('notification', notificationData);
 					});
 				});
@@ -93,13 +93,14 @@
 	}
 
 	module.exports = function (io) {
-		notifyAllUsersCron(io);
 
 		//This socket middleware is used to make sure that only an authenticated user can join a channel.
 		io.use(function (socket, next) {
 			if (socket.handshake.query && socket.handshake.query.token) {
 				jwt.verify(socket.handshake.query.token, config.secret, function (err, decoded) {
-					if (err) return next(new Error('User authentication error.'));
+					if (err) {
+						return next(new Error('User authentication error.'));
+					}
 					socket.decodedToken = decoded;
 					return next();
 				});
@@ -107,6 +108,9 @@
 			return next(new Error('User authentication error.'));
 		});
 
+		//start the cron function to keep pushing the notifications
+		notifyAllUsersCron(io);
+		
 		io.on('connection', function (socket) {
 			console.log("In socket");
 
